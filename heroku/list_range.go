@@ -30,6 +30,6 @@ func (lr *ListRange) SetHeader(req *http.Request) {
 	if lr.Descending {
 		hdrval += ", order=desc"
 	}
-	req.Header.Set("Range", hdrval)
+	// req.Header.Set("Range", hdrval)
 	return
 }

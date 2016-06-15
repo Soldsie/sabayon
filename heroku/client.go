@@ -69,7 +69,7 @@ func (s *Client) NewRequest(method, path string, body interface{}) (*http.Reques
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Accept", "application/vnd.heroku+json; version=3.sni_ssl_cert")
+	req.Header.Set("Accept", "application/vnd.heroku+json; version=3")
 	req.Header.Set("User-Agent", userAgent)
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", s.Token))
 	if ctype != "" {

@@ -22,7 +22,7 @@ func (s *Client) SetSSLCertificate(appName string, chain, key []byte) error {
 	}{string(chain), string(key)}
 
 	var res struct{}
-	return s.Post(&res, fmt.Sprintf("/apps/%s/sni-endpoints", appName), body)
+	return s.Post(&res, fmt.Sprintf("/apps/%s/ssl-endpoints", appName), body)
 }
 
 // UpdateSSLCertificate updates an existing certificate
@@ -33,13 +33,13 @@ func (s *Client) UpdateSSLCertificate(appName, certName string, chain, key []byt
 	}{string(chain), string(key)}
 
 	var res struct{}
-	return s.Patch(&res, fmt.Sprintf("/apps/%s/sni-endpoints/%s", appName, certName), body)
+	return s.Patch(&res, fmt.Sprintf("/apps/%s/ssl-endpoints/%s", appName, certName), body)
 }
 
 // GetSSLCertificates returns the certificates for an app
 func (s *Client) GetSSLCertificates(appName string) ([]Certificate, error) {
 	var res []Certificate
-	return res, s.Get(&res, fmt.Sprintf("/apps/%s/sni-endpoints", appName), &ListRange{})
+	return res, s.Get(&res, fmt.Sprintf("/apps/%s/ssl-endpoints", appName), &ListRange{})
 }
 
 // RemoveSSLCertificates removes all certificates added to an app
@@ -50,7 +50,7 @@ func (s *Client) RemoveSSLCertificates(appName string) error {
 	}
 
 	for _, c := range certificates {
-		err = s.Delete(fmt.Sprintf("/apps/%s/sni-endpoints/%s", appName, c.Name))
+		err = s.Delete(fmt.Sprintf("/apps/%s/ssl-endpoints/%s", appName, c.Name))
 		if err != nil {
 			return err
 		}
