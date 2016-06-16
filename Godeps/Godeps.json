@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/dmathieu/sabayon",
+	"ImportPath": "github.com/soldsie/sabayon",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v60",
 	"Packages": [

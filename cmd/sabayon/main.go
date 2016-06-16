@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dmathieu/sabayon/certs"
-	"github.com/dmathieu/sabayon/heroku"
 	"github.com/joho/godotenv"
+	"github.com/soldsie/sabayon/certs"
+	"github.com/soldsie/sabayon/heroku"
 )
 
 func main() {
