@@ -4,14 +4,10 @@ import (
 	"fmt"
 )
 
-type sslCert struct {
-	ExpiresAt string `json:"expires_at"`
-}
-
 // Certificate is the information of a single certificate
 type Certificate struct {
-	Name    string  `json:"name"`
-	SslCert sslCert `json:"ssl_cert"`
+	Name      string `json:"name"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 // SetSSLCertificate adds a certificate to an app

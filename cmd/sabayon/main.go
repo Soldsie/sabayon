@@ -44,15 +44,15 @@ func main() {
 	}
 
 	if len(certificates) != 0 && !force {
-		certExpiration, err := time.Parse(time.RFC3339, certificates[0].SslCert.ExpiresAt)
+		certUpdatedAt, err := time.Parse(time.RFC3339, certificates[0].UpdatedAt)
 		if err != nil {
 			log.Fatal(err)
 		}
 		now := time.Now()
-		renew := certExpiration.AddDate(0, -1, 0)
+		renew := certUpdatedAt.AddDate(0, 2, 0)
 
 		if now.Before(renew) {
-			log.Printf("cert.ignore_update expires_at=\"%s\" renew_at=\"%s\"", certExpiration, renew)
+			log.Printf("cert.ignore_update updated_at=\"%s\" renew_at=\"%s\"", certUpdatedAt, renew)
 			return
 		}
 	}
